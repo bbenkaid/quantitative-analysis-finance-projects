@@ -56,7 +56,7 @@ df = df.loc[openday]
 #print(df[df['tsun']!= '<NA>'])
 
 
-#Définition des catégories d'évenements météo
+#Définition des catégories d'événements météo
 snow = df[df['snwd']>0]
 rain = df[df['prcp']>20]
 wind = df[df['wspd']>30]
@@ -66,10 +66,10 @@ hum = df[df['rhum']>75] #Humidité dans l'air
 L = [snow,rain,wind,cloud,tb,hum]
 N = ['snow','rain','wind','cloud','tb','hum','norm']
 
-#Création d'un évenement jour normal
+#Création d'un événement jour normal
 Date = []
 for dates in df.index:
-    #df à toute les dates, on veut créer jour normal comme étant un jour sans évenements
+    #df à toute les dates, on veut créer jour normal comme étant un jour sans événements
     S = 0
     for l in L:
         if dates not in l.index:
@@ -81,7 +81,7 @@ Date = [d.strftime("%Y-%m-%d") for d in Date] #format date
 norm = df.loc[Date]
 L.append(norm)
 
-#Liste des dates pour chaques évenements
+#Liste des dates pour chaque événement
 DA = []
 for l in L:
      DA.append([d.strftime("%Y-%m-%d") for d in l.index])
@@ -117,7 +117,7 @@ plt.title("Impact météo sur CORN")
 plt.show()
 
 
-#Manifestation d'évenements binaires, Neige = 1 pas de Neige = 0
+#Manifestation d'événements binaires, Neige = 1 pas de Neige = 0
 #Objectif corelation avec les returns des actifs
 Z = np.zeros((len(returns.index),7))
 for d in range(len(returns.index)):
@@ -149,7 +149,7 @@ from sklearn.metrics import accuracy_score, classification_report, confusion_mat
 N = ['snow','rain','wind','cloud','tb','hum','norm',
     'up_SP500','up_VIX','up_NG','up_XLU','up_CORN']
 
-#Modèle binaire d'évenement météo et de retour up = 1 down = 0, pour prevoir le futur
+#Modèle binaire d'événement météo et de retour up = 1 down = 0, pour prevoir le futur
 Z = np.zeros((len(returns.index),12))
 returns = returns.shift(-1)
 
@@ -186,6 +186,7 @@ print("\nClassification report:")
 print(classification_report(y_test, y_pred))
 print("\nConfusion matrix:")
 print(confusion_matrix(y_test, y_pred))
+
 
 
 
