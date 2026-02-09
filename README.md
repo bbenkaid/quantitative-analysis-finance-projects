@@ -1,4 +1,3 @@
-# quantitative-analysis-finance-projects
 # Analyse des corrélations entre météo et rendements d’actifs financiers
 
 ## Objectif
