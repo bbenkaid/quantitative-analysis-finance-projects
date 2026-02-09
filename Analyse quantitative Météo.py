@@ -1,9 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sun Feb  8 14:36:57 2026
 
-@author: benka
-"""
 
 import numpy as np
 import yfinance as yf
@@ -191,6 +186,7 @@ print("\nClassification report:")
 print(classification_report(y_test, y_pred))
 print("\nConfusion matrix:")
 print(confusion_matrix(y_test, y_pred))
+
 
 
 
